@@ -12,4 +12,4 @@ build/
 Thumbs.db
 
 # Oauth
-application-oauth.propertiesW
+application-oauth.properties
