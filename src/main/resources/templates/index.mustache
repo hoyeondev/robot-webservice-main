@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center mb-3">
         <div class="col-md-8 text-center">
-            <a href="/robots/save" role="button" class="btn btn-primary">
+            <a href="/posts/save" role="button" class="btn btn-primary">
                 <i class="fas fa-plus"></i> 로봇 등록
             </a>
             {{#userName}}
@@ -47,7 +47,7 @@
                 <tr>
                     <td><span class="badge bg-secondary">{{id}}</span></td>
                     <td>
-                        <a href="/robots/update/{{id}}" class="text-decoration-none fw-bold">
+                        <a href="/posts/update/{{id}}" class="text-decoration-none fw-bold">
                             {{name}}
                         </a>
                     </td>
@@ -63,19 +63,19 @@
                     <td>{{author}}</td>
                     <td>{{modifiedDate}}</td>
                     <td>
-                        <a href="/robots/update/{{id}}" class="btn btn-sm btn-outline-primary">
+                        <a href="/posts/update/{{id}}" class="btn btn-sm btn-outline-primary">
                             <i class="fas fa-edit"></i> 수정
                         </a>
                     </td>
                 </tr>
-            {{/robots}}
-            {{^robots}}
+            {{/posts}}
+            {{^posts}}
                 <tr>
                     <td colspan="7" class="text-center text-muted py-4">
                         등록된 로봇이 없습니다.
                     </td>
                 </tr>
-            {{/robots}}
+            {{/posts}}
             </tbody>
         </table>
     </div>
