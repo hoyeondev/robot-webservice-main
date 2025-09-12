@@ -12,10 +12,10 @@
                 <a href="/logout" class="btn btn-outline-secondary ms-2" role="button">로그아웃</a>
             {{/userName}}
             {{^userName}}
-                <a href="/oauth2/authorization/google" class="btn btn-success ms-2" role="button">
+                <a href="/oauth2/authorization/google" class="btn btn-warning ms-2" role="button">
                     <i class="fab fa-google"></i> Google 로그인
                 </a>
-                <a href="/oauth2/authorization/naver" class="btn btn-warning ms-2" role="button">
+                <a href="/oauth2/authorization/naver" class="btn btn-success ms-2" role="button">
                     <i class="fas fa-n"></i> Naver 로그인
                 </a>
             {{/userName}}
@@ -43,7 +43,7 @@
             </thead>
             <tbody id="tbody">
             <!-- robots라는 Lists를 순회합니다. -->
-            {{#robots}}
+            {{#posts}}
                 <tr>
                     <td><span class="badge bg-secondary">{{id}}</span></td>
                     <td>
