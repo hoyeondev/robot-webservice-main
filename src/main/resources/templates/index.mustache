@@ -1,44 +1,84 @@
 {{>layout/header}}
 
-<h1>스프링부트로 시작하는 웹 서비스 Ver.2</h1>
-<div class="col-md-12">
-    <div class="row">
-        <div class="col-md-6">
-            <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+<h1 class="text-center">🤖 로봇 관리 시스템</h1>
+<div class="container">
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-8 text-center">
+            <a href="/robots/save" role="button" class="btn btn-primary">
+                <i class="fas fa-plus"></i> 로봇 등록
+            </a>
             {{#userName}}
-                Logged in as: <span id="user">{{userName}}</span>
-                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                <span class="ms-3">관리자: <span id="user" class="badge bg-info">{{userName}}</span></span>
+                <a href="/logout" class="btn btn-outline-secondary ms-2" role="button">로그아웃</a>
             {{/userName}}
             {{^userName}}
-                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
-                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+                <a href="/oauth2/authorization/google" class="btn btn-success ms-2" role="button">
+                    <i class="fab fa-google"></i> Google 로그인
+                </a>
+                <a href="/oauth2/authorization/naver" class="btn btn-warning ms-2" role="button">
+                    <i class="fas fa-n"></i> Naver 로그인
+                </a>
             {{/userName}}
         </div>
     </div>
 </div>
-<br>
-<!-- 목록 출력 영역 -->
-<table class="table table-horizontal table-bordered">
-    <thead class="thead-strong">
-    <tr>
-        <th>게시글번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>최종수정일</th>
-    </tr>
-    </thead>
-    <tbody id="tbody">
-    <!-- posts라는 Lists를 순회합니다. -->
-    {{#posts}}
-        <tr>
-            <!-- list에서 뽑아낸 객체의 필드를 사용합니다. -->
-            <td>{{id}}</td>
-            <td><a href="/posts/update/{{id}}">{{title}}</a></td>
-            <td>{{author}}</td>
-            <td>{{modifiedDate}}</td>
-        </tr>
-    {{/posts}}
-    </tbody>
-</table>
+
+<!-- 로봇 목록 출력 영역 -->
+<div class="card">
+    <div class="card-header bg-light">
+        <h5 class="card-title mb-0">등록된 로봇 목록</h5>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">로봇 ID</th>
+                <th scope="col">로봇명</th>
+                <th scope="col">모델</th>
+                <th scope="col">상태</th>
+                <th scope="col">등록자</th>
+                <th scope="col">최종수정일</th>
+                <th scope="col">관리</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            <!-- robots라는 Lists를 순회합니다. -->
+            {{#robots}}
+                <tr>
+                    <td><span class="badge bg-secondary">{{id}}</span></td>
+                    <td>
+                        <a href="/robots/update/{{id}}" class="text-decoration-none fw-bold">
+                            {{name}}
+                        </a>
+                    </td>
+                    <td>{{model}}</td>
+                    <td>
+                        {{#active}}
+                            <span class="badge bg-success">활성</span>
+                        {{/active}}
+                        {{^active}}
+                            <span class="badge bg-danger">비활성</span>
+                        {{/active}}
+                    </td>
+                    <td>{{author}}</td>
+                    <td>{{modifiedDate}}</td>
+                    <td>
+                        <a href="/robots/update/{{id}}" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-edit"></i> 수정
+                        </a>
+                    </td>
+                </tr>
+            {{/robots}}
+            {{^robots}}
+                <tr>
+                    <td colspan="7" class="text-center text-muted py-4">
+                        등록된 로봇이 없습니다.
+                    </td>
+                </tr>
+            {{/robots}}
+            </tbody>
+        </table>
+    </div>
 </div>
+
 {{>layout/footer}}
