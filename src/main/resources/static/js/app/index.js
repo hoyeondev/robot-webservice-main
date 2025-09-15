@@ -38,6 +38,9 @@ var main = {
     update : function () {
         var data = {
             title: $('#title').val(),
+            model: $('#model').val(),
+            author: $('#author').val(),
+            active: $('#active').val(),
             content: $('#content').val()
         };
 
