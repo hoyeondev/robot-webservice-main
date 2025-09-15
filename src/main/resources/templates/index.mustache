@@ -42,13 +42,13 @@
             </tr>
             </thead>
             <tbody id="tbody">
-            <!-- robots라는 Lists를 순회합니다. -->
+            <!-- posts Lists를 순회합니다. -->
             {{#posts}}
                 <tr>
                     <td><span class="badge bg-secondary">{{id}}</span></td>
                     <td>
                         <a href="/posts/update/{{id}}" class="text-decoration-none fw-bold">
-                            {{name}}
+                            {{userName}}
                         </a>
                     </td>
                     <td>{{model}}</td>
